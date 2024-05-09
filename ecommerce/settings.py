@@ -1,6 +1,7 @@
 
 from datetime import timedelta
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -50,6 +51,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware'
 ]
+
+CORS_ALLOWED_ORIGINS = [
+  'http://localhost:19006',
+]
+
+MIDDLEWARE_CLASSES = [
+    'corsheaders.middleware.CorsMiddleware'
+]
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -117,6 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+MEDIA_URL = '/media/' # pasta onde ficarão as imagens do projeto
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # definir que será um diretório no caminho das pastas 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
